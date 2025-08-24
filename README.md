@@ -18,15 +18,24 @@ A terminal-based dungeon crawler game written in Python with multiple enemy type
 - **WASD** - Move player (@)
 - **F** - Melee fight nearby enemies
 - **IJKL** - Shoot bullets in directions (up/down/left/right)
+- **TAB** - Toggle inventory display
+- **1/2/3** - Use inventory items (Health/Speed/Damage)
 - **Q/E** - Quit game
 
 ## How to Play
 
 1. Navigate the dungeon using WASD keys
 2. Fight enemies with F (melee) or IJKL (ranged)
-3. Collect health items (+) to restore HP
-4. Clear all enemies to unlock the exit (>)
-5. Reach the exit to advance to the next level
+3. Collect items: + (health), S (speed boost), D (damage boost)
+4. Use TAB to view inventory, 1/2/3 to use items
+5. Clear all enemies to unlock the exit (>)
+6. Reach the exit to advance to the next level
+
+## Inventory System
+
+- **Health Items (+)**: Instant +10 HP when collected, or store and use with key 1 for +25 HP
+- **Speed Items (S)**: Collect and use with key 2 for 10 seconds of double movement speed
+- **Damage Items (D)**: Permanent +5 bullet damage when collected, use with key 3 for +15 damage on next 5 shots
 
 ## Requirements
 
@@ -46,6 +55,20 @@ Or use the launcher:
 python game_launcher.py dungeon
 ```
 
+### Using Seeds
+
+Like Minecraft, you can use a seed to generate the same world layout:
+
+```bash
+# Direct execution with seed
+python dungeon_crawler.py 1234567890
+
+# Using launcher with seed
+python game_launcher.py dungeon 1234567890
+```
+
+Seeds are large numbers that determine enemy and item placement for each level. The same seed will always generate the same world layout, allowing you to share interesting worlds or replay challenging configurations.
+
 ## Game Elements
 
 - `@` - Player
@@ -53,6 +76,8 @@ python game_launcher.py dungeon
 - `F` - Fast Enemy
 - `T` - Tank Enemy
 - `+` - Health Item
+- `S` - Speed Boost Item
+- `D` - Damage Boost Item
 - `>` - Exit
 - `*` - Enemy Bullets
 - `-` - Player Bullets
