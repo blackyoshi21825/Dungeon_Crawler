@@ -170,10 +170,14 @@ class DungeonCrawler:
         # Regular and tank enemies shoot every 1.5 seconds
         if current_time - self.last_shot_time > 1.5:
             for ex, ey, _, etype in self.enemies:
-                if etype == 'M' or (etype == 'T' and random.random() < 0.5):
+                if etype == 'M':
                     dx = 1 if self.player_x > ex else -1 if self.player_x < ex else 0
                     dy = 1 if self.player_y > ey else -1 if self.player_y < ey else 0
                     self.bullets.append([ex, ey, dx, dy])
+                elif etype == 'T':
+                    # Tanks shoot star pattern (8 directions)
+                    for dx, dy in [(1,0), (-1,0), (0,1), (0,-1), (1,1), (-1,-1), (1,-1), (-1,1)]:
+                        self.bullets.append([ex, ey, dx, dy])
             self.last_shot_time = current_time
             
     def update_bullets(self):
