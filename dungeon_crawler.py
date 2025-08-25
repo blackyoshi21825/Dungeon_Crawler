@@ -353,6 +353,8 @@ class DungeonCrawler:
             time.sleep(0.05)
                 
         print("GAME OVER!")
+        time.sleep(1)
+        os.system('cls' if os.name == 'nt' else 'clear')
 
 if __name__ == "__main__":
     seed = None
